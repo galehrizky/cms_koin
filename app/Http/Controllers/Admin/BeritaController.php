@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\BeritaModel;
 use DataTables;
 use Storage;
+use Carbon\Carbon;
 
 class BeritaController extends Controller
 {
@@ -155,7 +156,7 @@ class BeritaController extends Controller
         if(Storage::disk('local')->exists('public/image/'.$get_old_data->path_image)){
                 Storage::disk('local')->delete('public/image/'.$get_old_data->path_image);
                 BeritaModel::find($id)->delete();
-                return redirect()->route('berita.index')->with(['msg_warning' => 'Berita berhasil di Hapus']);
+                return redirect()->route('news.index')->with(['msg_warning' => 'Berita berhasil di Hapus']);
             }
     }
 }
