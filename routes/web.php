@@ -33,6 +33,6 @@ Route::get('news_types/datatables', 'Admin\NewsTypeController@getDataTbales')->n
 
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
