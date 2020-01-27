@@ -13,6 +13,10 @@
 Route::get('/', 'Home\MainController@index');
 Route::get('/news-detail-{id}', 'Home\MainController@get_by_id')->name('details');
 
+Route::get('/archive', 'Home\MainController@archive');
+
+Route::get('/register_umroh', 'Home\MainController@register');
+
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
 
 Route::get('/', function () {

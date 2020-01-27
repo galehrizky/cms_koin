@@ -17,7 +17,17 @@ class MainController extends Controller
 
     public function get_by_id($id)
     {
-    	$row = BeritaModel::where('id', $id)->firstOrFail();
-    	return view('home.single', compact('row'));
+    	// $row = BeritaModel::where('id', $id)->firstOrFail();
+    	return view('home.single');
+    }
+
+
+    public function archive(){
+        return view('home.archive');
+    }
+
+    public function register(){
+        
+        return view('home.register_');
     }
 }
