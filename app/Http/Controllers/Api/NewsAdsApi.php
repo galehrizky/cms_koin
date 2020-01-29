@@ -5,26 +5,55 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BeritaModel;
+use App\NewsAdsTypeModel;
 use Carbon\Carbon;
 
 class NewsAdsApi extends Controller
 {
-    public function Api_get_list(Request $request)
+    public function Api_get_list()
     {
-    	$data = BeritaModel::join('news_ads_type', 'news_ads_type.id', 'news_ads.news_ads_type_id')->select('news_ads.created_at','news_ads.description','news_ads.image', 'news_ads.link', 'news_ads.news_ads_name', 'news_ads.news_ads_name','news_ads_type.news_ads_type', 'news_ads.updated_at')->whereDate('start_date', '>=', Carbon::now()->format('Y-m-d'))->whereDate('expired_date', '<=', Carbon::now()->format('Y-m-d'))->get();
+    	$data = BeritaModel::join('news_ads_type', 'news_ads_type.id', 'news_ads.news_ads_type_id')->select('news_ads.created_at','news_ads.description','news_ads.image', 'news_ads.link', 'news_ads.news_ads_name', 'news_ads.news_ads_name','news_ads_type.news_ads_type', 'news_ads.updated_at')->whereDate('expired_date', '>=', Carbon::now()->format('Y-m-d'))->get();
+
     	$result = [];
+        $aw = [];
     	foreach ($data as $key => $value) {
-    		$result[$key]['createdDate'] = $value->created_at;
-    		$result[$key]['description'] = $value->description;
-    		$result[$key]['image'] = $value->image;
-    		$result[$key]['link'] = $value->link;
-    		$result[$key]['newsAdsName'] = $value->news_ads_name;
-    		$result[$key]['newsAdsType'] = $value->news_ads_type;	
-    		$result[$key]['updatedDate'] = $value->updated_at;	
+    		$aw[$key]['createdDate'] = $value->created_at;
+    		$aw[$key]['description'] = $value->description;
+    		$aw[$key]['image'] = $value->image;
+    		$aw[$key]['link'] = $value->link;
+    		$aw[$key]['newsAdsName'] = $value->news_ads_name;
+    		$aw[$key]['newsAdsType'] = $value->news_ads_type;	
+    		$aw[$key]['updatedDate'] = $value->updated_at;	
     	}
 
-        if (empty($result)) {
-            return response()->json(['messages' => 'Opps News & ads Not Found !']);
+
+        $result['status'] = true;
+        $result['data'] = $aw;
+
+        if (empty($aw)) {
+            return response()->json(['status' => false, 'messages' => 'Opps News & ads Not Found !']);
+        }else{
+            return response()->json($result);
+        }
+    }
+
+
+    public function Category()
+    {
+        $ss = [];
+        $result = [];
+
+        $cat = NewsAdsTypeModel::all();
+
+        foreach ($cat as $key => $value) {
+            $ss[$key]['category'] = $value->news_ads_type; 
+        }
+        
+
+        $result['status'] = true;
+        $result['data'] = $ss;
+        if (empty($ss)) {
+            return response()->json(['status' => false, 'messages' => 'Empty!']);
         }else{
             return response()->json($result);
         }

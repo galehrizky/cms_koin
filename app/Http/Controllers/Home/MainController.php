@@ -30,4 +30,9 @@ class MainController extends Controller
         
         return view('home.register_');
     }
+
+    public function get_doc()
+    {
+        return view('doc');
+    }
 }

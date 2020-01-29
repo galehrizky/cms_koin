@@ -12,6 +12,7 @@ class BeritaModel extends Model
     	'description',
     	'link',
     	'image',
+        'type',
     	'news_ads_type_id',
     	'start_date',
     	'expired_date',

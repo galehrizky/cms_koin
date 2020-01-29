@@ -35,7 +35,7 @@
                 <!-- User avatar dropdown -->
                 <div class="dropdown">
                     <div class="user col align-self-end">
-                        <img src="https://static.thenounproject.com/png/17241-200.png" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/41U2wqNUKWL._SY450_.jpg" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                             <div class="dropdown-header">
@@ -66,17 +66,17 @@
                         </a>
                         <div class="triangle"></div>
                     </li>
-                    <li class="nav-item" data-item="ads">
+                     <li class="nav-item" data-item="ads">
                         <a class="nav-item-hold" href="#">
-                            <i class="nav-icon i-Library"></i>
+                            <i class="nav-icon i-Duplicate-Window"></i>
                             <span class="nav-text">Ads</span>
                         </a>
                         <div class="triangle"></div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-item-hold" href="{{ route('news.index') }}">
-                            <i class="nav-icon i-File-Horizontal-Text"></i>
-                            <span class="nav-text">List Ads & News</span>
+                    <li class="nav-item" data-item="travel">
+                        <a class="nav-item-hold" href="#">
+                            <i class="nav-icon i-Drop"></i>
+                            <span class="nav-text">Travel</span>
                         </a>
                         <div class="triangle"></div>
                     </li>
@@ -87,25 +87,59 @@
                 <!-- Submenu Dashboards -->
                 <ul class="childNav" data-parent="dashboard">
                     <li class="nav-item">
-                        <a href="dashboard.v1.html">
+                        <a href="#">
                             <i class="nav-icon i-Clock-3"></i>
-                            <span class="item-name">Dashboard</span>
+                            <span class="item-name"> Dashboard</span>
                         </a>
                     </li>
                 </ul>
                 <ul class="childNav" data-parent="berita">
                     <li class="nav-item">
                         <a href="{{ route('news.create') }}?type=News">
-                            <i class="nav-icon i-Split-Horizontal-2-Window"></i>
-                            <span class="item-name">Create News</span>
+                            <i class="nav-icon i-ID-Card"></i>
+                            <span class="item-name"> Create News</span>
                         </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-item-hold" href="{{ route('news.index') }}?type=news">
+                            <i class="nav-icon i-File-Horizontal-Text"></i>
+                            <span class="nav-text"> News</span>
+                        </a>
+                        <div class="triangle"></div>
                     </li>
                 </ul>
                 <ul class="childNav" data-parent="ads">
                     <li class="nav-item">
                         <a href="{{ route('news.create') }}?type=Ads">
                             <i class="nav-icon i-Split-Horizontal-2-Window"></i>
-                            <span class="item-name">Create Ads</span>
+                            <span class="item-name"> Create Ads</span>
+                        </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-item-hold" href="{{ route('news.index') }}?type=ads">
+                            <i class="nav-icon i-File-Horizontal-Text"></i>
+                            <span class="nav-text"> Ads</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
+                </ul>
+                <ul class="childNav" data-parent="travel">
+                    <li class="nav-item">
+                        <a href="{{ route('news.create') }}?type=Travel">
+                            <i class="nav-icon i-Approved-Window"></i>
+                            <span class="item-name">Create Information</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('news.index') }}?type=travel">
+                            <i class="nav-icon i-Approved-Window"></i>
+                            <span class="item-name">Information</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('news.create') }}?type=Ads">
+                            <i class="nav-icon i-Lock-User mr-1"></i>
+                            <span class="item-name">User Calon</span>
                         </a>
                     </li>
                 </ul>

@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/', function (Request $request) {
     return $request->user();
 });
 
-Route::get('news_ads', 'Api\NewsAdsApi@Api_get_list');
+Route::get('/news_ads', 'Api\NewsAdsApi@Api_get_list');
+Route::get('/category', 'Api\NewsAdsApi@Category');

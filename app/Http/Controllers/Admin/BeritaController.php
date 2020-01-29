@@ -24,9 +24,9 @@ class BeritaController extends Controller
     }
 
 
-    public function getDataTbales(){
+    public function getDataTbales($param){
 
-        $data = BeritaModel::join('news_ads_type', 'news_ads_type.id', 'news_ads.news_ads_type_id')->select('news_ads.news_ads_name','news_ads.start_date','news_ads.expired_date', 'news_ads_type.news_ads_type', 'news_ads.id')->get();
+        $data = BeritaModel::join('news_ads_type', 'news_ads_type.id', 'news_ads.news_ads_type_id')->select('news_ads.news_ads_name','news_ads.start_date','news_ads.expired_date','news_ads.type', 'news_ads_type.news_ads_type', 'news_ads.id')->where('type', $param)->get();
             return Datatables::of($data)    
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
@@ -81,8 +81,8 @@ class BeritaController extends Controller
         $data = $request->except(['image', '_token']);
         $data['image'] = $filename;
         BeritaModel::create($data);
-
-         return redirect()->route('news.index')->with(['msg_success' => 'News & Ads Berhasil di tambahkan !']);
+        \Session::flash('msg_success', 'Data Berhasil di tambahkan !'); 
+         return redirect('dashboard/news?type='.$request->type);
     }
 
     /**
@@ -141,7 +141,7 @@ class BeritaController extends Controller
         }
 
         BeritaModel::where('id', $id)->update($data);
-         return redirect()->route('news.index')->with(['msg_success' => 'News & Ads Berhasil di Updated !']);
+          return redirect('dashboard/news?type='.$request->type)->with(['msg_success' => 'News & Ads Berhasil di Updated !']);
     }
 
     /**
@@ -156,7 +156,7 @@ class BeritaController extends Controller
         if(Storage::disk('local')->exists('public/image/'.$get_old_data->path_image)){
                 Storage::disk('local')->delete('public/image/'.$get_old_data->path_image);
                 BeritaModel::find($id)->delete();
-                return redirect()->route('news.index')->with(['msg_warning' => 'Berita berhasil di Hapus']);
+                return redirect()->back()->with(['msg_warning' => 'Berita berhasil di Hapus']);
             }
     }
 }

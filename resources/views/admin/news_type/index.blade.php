@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Data News & Ads Type')
+@section('title','Data Category')
 @section('css')
 <!-- toastr css -->
     <link rel="stylesheet" href="{{ asset('act/assets/styles/vendor/toastr.css')}}">
@@ -9,9 +9,9 @@
 <!-- ============ Body content start ============= -->
 <div class="main-content-wrap sidenav-open d-flex flex-column">
     <div class="breadcrumb">
-        <h1>Data News & Ads Type</h1>
+        <h1>Data Category</h1>
         <ul>
-            <li><a href="">Data News & Ads Type</a></li>
+            <li><a href="">Data Category</a></li>
         </ul>
     </div>
     <div class="separator-breadcrumb border-top"></div>
@@ -24,8 +24,8 @@
                   <div class="panel-heading">
                       <div class="media v-middle">
                         <div class="media-body">
-                            <h4 class="text-headline margin-none">Data News & Ads type</h4>
-                            <p class="text-subhead text-light">Data News & Ads type Manajemen</p>
+                            <h4 class="text-headline margin-none">Data Category</h4>
+                            <p class="text-subhead text-light">Data Category Manajemen</p>
                         </div>
 
                         <div class="media-right">
@@ -38,7 +38,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>News & Ads Type</th>
+                            <th>Category</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -66,10 +66,10 @@
       </button>
   </div>
   <div class="modal-body">
-    <form action="{{ route('news_type.store') }}" method="POST">
+    <form action="{{ route('category.store') }}" method="POST">
       @csrf
-      <label>Nama News & Ads type</label>
-      {!! Form::text('news_ads_type', null, ['placeholder' => 'Nama News & Ads type','class' => 'form-control', 'required']) !!}
+      <label>Nama Category</label>
+      {!! Form::text('news_ads_type', null, ['placeholder' => 'Nama Category','class' => 'form-control', 'required']) !!}
   </div>
   <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -94,8 +94,8 @@
     <form id="form-updated" method="POST">
       @csrf
       @method('PUT')
-     <label>Nama News & Ads type</label>
-      {!! Form::text('news_ads_type', null, ['placeholder' => 'Nama News & Ads type','class' => 'form-control', 'id' => 'news_ads_type', 'required']) !!}
+     <label>Nama Category</label>
+      {!! Form::text('news_ads_type', null, ['placeholder' => 'Nama Category','class' => 'form-control', 'id' => 'news_ads_type', 'required']) !!}
 
   </div>
   <div class="modal-footer">

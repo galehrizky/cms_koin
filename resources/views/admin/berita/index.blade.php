@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','News Data')
+@section('title',' Data')
 
 @section('css')
 <!-- toastr css -->
@@ -9,9 +9,9 @@
         <!-- ============ Body content start ============= -->
         <div class="main-content-wrap sidenav-open d-flex flex-column">
             <div class="breadcrumb">
-                <h1>News & Ads</h1>
+                <h1>{{ request()->type == "news" ? "News List" : (request()->type == "ads" ? "List Ads": "List Travel" ) }}</h1>
                 <ul>
-                    <li><a href="">News & Ads</a></li>
+                    <li><a href="">{{ request()->type == "news" ? "News List" : (request()->type == "ads" ? "List Ads": "List Travel" ) }}</a></li>
                 </ul>
             </div>
             <div class="separator-breadcrumb border-top"></div>
@@ -21,14 +21,15 @@
                     <div class="card text-left">
 
                         <div class="card-body">
-                            <h4 class="card-title mb-3">News & Ads</h4>
+                            <h4 class="card-title mb-3"></h4>
                             <div class="table-responsive">
                                 <table id="datatables" class="display table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>News & Ads Names</th>
-                                            <th>News & Ads Type</th>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th>Type</th>
                                             <th>Start date</th>
                                             <th>Expired date</th>
                                             <th>Action</th>
@@ -86,11 +87,12 @@
     var table = $('#datatables').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('beritas.datatables') }}",
+        ajax: "{{ route('beritas.datatables', request()->type) }}",
         columns: [
           { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
             { data: 'news_ads_name', name: 'news_ads_name' },
             { data: 'news_ads_type', name: 'news_ads_type' },
+             { data: 'type', name: 'type' },
             { data: 'start_date', name: 'start_date' },
             { data: 'expired_date', name: 'expired_date' },
             {data: 'action', name: 'action', orderable: false, searchable: false}

@@ -17,6 +17,8 @@ Route::get('/archive', 'Home\MainController@archive');
 
 Route::get('/register_umroh', 'Home\MainController@register');
 
+Route::get('/~~~/doc', 'Home\MainController@get_doc');
+
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
 
 Route::get('/', function () {
@@ -26,13 +28,11 @@ Route::get('/', function () {
 // Berita
 Route::resource('/news', 'Admin\BeritaController');
 // Berita Datatables
-Route::get('/beritas/datatables', 'Admin\BeritaController@getDataTbales')->name('beritas.datatables');
-// Kategori
-Route::resource('/kategori', 'Admin\KategoriController')->except(['show', 'edit']);
+Route::get('/beritas/datatables/{param}', 'Admin\BeritaController@getDataTbales')->name('beritas.datatables');
 // Datatables kategori
 Route::get('kategoris/datatables', 'Admin\KategoriController@getDataTbales')->name('datatables.kategori');
 
-Route::resource('news_type', 'Admin\NewsTypeController')->except(['show', 'edit', 'create']);
+Route::resource('category', 'Admin\NewsTypeController')->except(['show', 'edit', 'create']);
 Route::get('news_types/datatables', 'Admin\NewsTypeController@getDataTbales')->name('datatables.news_types');
 
 });

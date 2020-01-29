@@ -34,10 +34,10 @@ class NewsTypeController extends Controller
         return Datatables::of($data)    
         ->addIndexColumn()
         ->addColumn('action', function($row){
-         $btn = '<a href="#" class="text-success mr-2 edit" data-url="'.route('news_type.update',$row->id).'" data-news_ads_type="'.$row->news_ads_type.'">
+         $btn = '<a href="#" class="text-success mr-2 edit" data-url="'.route('category.update',$row->id).'" data-news_ads_type="'.$row->news_ads_type.'">
          <i class="nav-icon i-Pen-2 font-weight-bold"></i>
          </a>';
-         $btn .= '<a href="#" class="text-danger mr-2 delete" data-url="'.route('news_type.destroy',$row->id).'">
+         $btn .= '<a href="#" class="text-danger mr-2 delete" data-url="'.route('category.destroy',$row->id).'">
          <i class="nav-icon i-Close-Window font-weight-bold"></i>
          </a>';
          if(isset($btn)){

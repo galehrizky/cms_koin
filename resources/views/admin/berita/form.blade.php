@@ -2,12 +2,12 @@
             <div class="col-md-6">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <div class="card-title">News & Ads</div>
+                        <div class="card-title">{{ request()->type == "News" ? "Add News" : (request()->type == "Ads" ? "Add Ads": "Add Travel & umroh" ) }}</div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">News & Ads</span>
+                                <span class="input-group-text">{{ request()->type == "News" ? "Add News" : (request()->type == "Ads" ? "Add Ads": "Add Travel & umroh" ) }}</span>
                             </div>
-                            {!! Form::text('news_ads_name', null, ['placeholder' => 'Masukan News & Ads Name','class' => 'form-control']) !!}
+                            {!! Form::text('news_ads_name', null, ['placeholder' => 'Masukan  Name','class' => 'form-control']) !!}
                         </div>
                         @if ($errors->has('judul'))
                         <span class="invalid" role="alert">
@@ -52,9 +52,9 @@
                <div class="col-md-6"> 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">News & Ads Link</span>
+                            <span class="input-group-text" id="basic-addon1">{{ request()->type }} Link</span>
                         </div>
-                        {!! Form::text('link', null, ['placeholder' => 'Masukan Link News & Ads Name','class' => 'form-control']) !!}
+                        {!! Form::text('link', null, ['placeholder' => 'Masukan Link','class' => 'form-control']) !!}
                         @if ($errors->has('link'))
                         <span class="invalid" role="alert">
                           <strong>{{ $errors->first('link') }}</strong>
@@ -62,15 +62,29 @@
                       @endif
                   </div>
               </div>
-              <div class="col-md-6"> 
+              <div class="col-md-3"> 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">News & Ads Type</span>
+                            <span class="input-group-text" id="basic-addon1">Type</span>
                         </div>
                         @php
-                        $result = array_search(request()->type == false ? 4 : request()->type, $news_ads_type->toArray());
+                        $result = request()->type == "News" ? "news" : (request()->type == "Ads" ? "ads": "travel" );
+                        $arr = ["news" => "news", "ads" => "ads", "travel" => "travel"];
                         @endphp
-                        {!! Form::select('news_ads_type_id', $news_ads_type, isset($data) ? $data->news_ads_type_id : $result, ['class' => 'form-control']); !!}
+                        {!! Form::select('type', $arr, isset($data) ? $data->type : $result, ['class' => 'form-control', 'readonly']); !!}
+                        @if ($errors->has('type'))
+                        <span class="invalid" role="alert">
+                          <strong>{{ $errors->first('type') }}</strong>
+                      </span>
+                      @endif
+                  </div>
+              </div>
+              <div class="col-md-3"> 
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Kategori</span>
+                        </div>
+                        {!! Form::select('news_ads_type_id', $news_ads_type, isset($data) ? $data->news_ads_type_id : '', ['class' => 'form-control']); !!}
                         @if ($errors->has('news_ads_type_id'))
                         <span class="invalid" role="alert">
                           <strong>{{ $errors->first('news_ads_type_id') }}</strong>
@@ -84,7 +98,7 @@
                             <span class="input-group-text" id="basic-addon1">Start date from </span>
                         </div>
                    
-                        <input type="date" class="form-control" name="start_date">
+                        <input type="date" value="{{ isset($data) ? $data->start_date : old('start_date') }}" class="form-control" name="start_date">
                         @if ($errors->has('start_date'))
                         <span class="invalid" role="alert">
                           <strong>{{ $errors->first('start_date') }}</strong>
@@ -97,7 +111,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Expired date</span>
                         </div>
-                        <input type="date" class="form-control" name="expired_date">
+                        <input type="date" class="form-control" value="{{ isset($data) ? $data->expired_date : old('expired_date') }}" name="expired_date">
                         @if ($errors->has('expired_date'))
                         <span class="invalid" role="alert">
                           <strong>{{ $errors->first('expired_date') }}</strong>

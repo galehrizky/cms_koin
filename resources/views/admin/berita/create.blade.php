@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Form News & Ads')
+@section('title','Form ')
 @section('css')
 <style type="text/css">
   .invalid {
@@ -14,10 +14,9 @@
 <!-- ============ Body content start ============= -->
 <div class="main-content-wrap sidenav-open d-flex flex-column">
         <div class="breadcrumb">
-            <h1>News & Ads</h1>
+            <h1>{{ request()->type == "News" ? "Add News" : (request()->type == "Ads" ? "Add Ads": "Add Travel & umroh" ) }}</h1>
             <ul>
-                <li><a href="">News & Ads</a></li>
-                <li>News & Ads</li>
+                <li><a href="#">{{ request()->type == "News" ? "Add News" : (request()->type == "Ads" ? "Add Ads": "Add Travel & umroh" ) }}</a></li>
             </ul>
         </div>
 

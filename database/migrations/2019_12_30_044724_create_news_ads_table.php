@@ -19,6 +19,7 @@ class CreateNewsAdsTable extends Migration
             $table->text('description');
             $table->string('link');
             $table->string('image');
+            $table->enum('type',['news', 'ads', 'travel']);
             $table->integer('news_ads_type_id');
             $table->date('start_date');
             $table->date('expired_date');
