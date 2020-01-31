@@ -9,9 +9,19 @@ class MainController extends Controller
 {
     public function index()
     {
-    	$news = BeritaModel::take(12)->get();
+        $news = BeritaModel::with(['cat' => function($query){
+            $query->select('news_ads_type');
+        }])->WhereIn('type', ['news', 'ads'])->take(12)->get();
 
-    	return view('home.index', compact('news'));
+
+        foreach ($news as $key => $value) {
+                dd($value->cat);
+        }
+
+        $travel_limit_1 = BeritaModel::Where('type', 'travel')->take(1)->get();
+        $travel_limit_3 = BeritaModel::Where('type', 'travel')->take(3)->get();
+
+    	return view('home.index', compact('news', 'travel_limit_1', 'travel_limit_3'));
     }
 
 

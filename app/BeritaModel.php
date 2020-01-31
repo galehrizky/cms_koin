@@ -17,4 +17,11 @@ class BeritaModel extends Model
     	'start_date',
     	'expired_date',
     ];
+
+
+
+
+    public function cat(){
+        return $this->hasOne('App\NewsAdsTypeModel', 'id', 'news_ads_type_id');
+    }
 }

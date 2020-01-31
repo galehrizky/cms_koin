@@ -21,6 +21,7 @@
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
+                                <a href="#"></a>/
                                 <a href="#">March 15, 2019</a>
                             </div>
                             <a class="d-block" href="#">

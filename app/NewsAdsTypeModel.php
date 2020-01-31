@@ -10,4 +10,8 @@ class NewsAdsTypeModel extends Model
     protected $fillable = [
     	'news_ads_type',
     ];
+
+     public function cat(){
+        return $this->belongsTo('App\BeritaModel', 'news_ads_type_id', 'id');
+    }
 }
