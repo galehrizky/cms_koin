@@ -33,9 +33,9 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="#">News & Ads</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="#">Travel Umroh</a></li>       
+                            <li class="nav-item {{ request()->is('/') ? 'active' : '' }}"><a class="nav-link" href="{{ url('') }}">Home</a></li> 
+                            <li class="nav-item {{ request()->is('archive-news') ? 'active' : '' }}"><a class="nav-link" href="{{ route('type', 'news') }}">News & Ads</a></li> 
+                            <li class="nav-item {{ request()->is('archive-travel') ? 'active' : '' }}"><a class="nav-link" href="{{ route('type', 'travel') }}">Travel Umroh</a></li>       
                         </ul>
                     </div>
                 </div>

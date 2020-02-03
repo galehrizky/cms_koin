@@ -21,10 +21,10 @@
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
-                                <a href="#"></a>/
-                                <a href="#">March 15, 2019</a>
+                                <a href="#">{{ $row->news_ads_type }}</a>/
+                                <a href="#"> {{ \Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</a>
                             </div>
-                            <a class="d-block" href="#">
+                            <a class="d-block" href="{{ route('details', $row->id) }}">
                                 <h4>{{ $row->news_ads_name }}</h4>
                             </a>
                         </div>
@@ -52,107 +52,42 @@
 
             </div>
             <div class="row">
+                @foreach($travel_limit_1 as $row)
                 <div class="col-lg-7">
                     <div class="single-blog video-style">
                         <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/magazine/11.jpg')}}" alt="">
-                            <div class="play_btn">
-                                <a class="play-video" href="https://www.youtube.com/watch?v=MrRvX5I8PyY" data-animate="zoomIn"
-                                data-duration="1.5s" data-delay="0.1s"><span class="ti-control-play"></span></a>
-                            </div>
+                            <img class="img-fluid" src="{{ url('storage/image/'.$row->image)}}" alt="">
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
-                                <a href="#">shoes</a>/
-                                <a href="#">March 15, 2019</a>
+                                <a href="#">{{ $row->news_ads_type }}</a>/
+                                <a href="">{{ \Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</a>
                             </div>
-                            <a class="d-block" href="#">
-                                <h4>Created face stars sixth forth fow
-                                Earth firmament meat</h4>
+                            <a class="d-block" href="{{ route('details', $row->id) }}">
+                                <h4>{{ $row->news_ads_name }}</h4>
                             </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>05 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                                <a href="#"><i class="ti-eye"></i> 1k view</a>
-                            </div>
+    
                         </div>
                     </div> 
 
                 </div> 
-
+                @endforeach
                 <div class="col-lg-5">
+                    @foreach($travel_limit_3 as $row)
                     <div class="single-blog video-style small row m_b_30">
                         <div class="thumb col-12 col-sm-5">
-                            <img class="img-fluid" src="{{ asset('ui/img/magazine/12.jpg')}}" alt="">
-                            <div class="play_btn">
-                                <a class="play-video" href="https://www.youtube.com/watch?v=MrRvX5I8PyY" data-animate="zoomIn"
-                                data-duration="1.5s" data-delay="0.1s"><span class="ti-control-play"></span></a>
-                            </div>
+                            <img class="img-fluid" style="width: 175px;height:162;" src="{{ url('storage/image/'.$row->image)}}" alt="">
                         </div>
                         <div class="short_details col-12 col-sm-7">
                             <div class="meta-top d-flex">
-                                <a href="#">Beauty</a>
+                                <a href="#">{{ $row->news_ads_type }}</a>
                             </div>
-                            <a class="d-block" href="#">
-                                <h4>Blessed night morning on
-                                them you great</h4>
+                            <a class="d-block" href="{{ route('details', $row->id) }}">
+                                <h4>{{ $row->news_ads_name }}</h4>
                             </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-time"></i>mar 12</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                                <a href="#"><i class="ti-eye"></i> 1k view</a>
-                            </div>
-                        </div>
-                    </div> 
-
-                    <div class="single-blog video-style small row m_b_30 ">
-                        <div class="thumb col-12 col-sm-5">
-                            <img class="img-fluid" src="{{ asset('ui/img/magazine/13.jpg')}}" alt="">
-                            <div class="play_btn">
-                                <a class="play-video" href="https://www.youtube.com/watch?v=MrRvX5I8PyY" data-animate="zoomIn"
-                                data-duration="1.5s" data-delay="0.1s"><span class="ti-control-play"></span></a>
-                            </div>
-                        </div>
-                        <div class="short_details col-12 col-sm-7">
-                            <div class="meta-top d-flex">
-                                <a href="#">Beauty</a>
-                            </div>
-                            <a class="d-block" href="#">
-                                <h4>Blessed night morning on
-                                them you great</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-time"></i>mar 12</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                                <a href="#"><i class="ti-eye"></i> 1k view</a>
-                            </div>
                         </div>
                     </div>
-
-                    <div class="single-blog video-style small row">
-                        <div class="thumb col-12 col-sm-5">
-                            <img class="img-fluid" src="{{ asset('ui/img/magazine/14.jpg')}}" alt="">
-                            <div class="play_btn">
-                                <a class="play-video" href="https://www.youtube.com/watch?v=MrRvX5I8PyY" data-animate="zoomIn"
-                                data-duration="1.5s" data-delay="0.1s"><span class="ti-control-play"></span></a>
-                            </div>
-                        </div>
-                        <div class="short_details col-12 col-sm-7">
-                            <div class="meta-top d-flex">
-                                <a href="#">Beauty</a>
-                            </div>
-                            <a class="d-block" href="#">
-                                <h4>Blessed night morning on
-                                them you great</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-time"></i>mar 12</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                                <a href="#"><i class="ti-eye"></i> 1k view</a>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>

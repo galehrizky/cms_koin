@@ -6,248 +6,27 @@
     <section class="category-page area-padding">
         <div class="container">
             <div class="row">
+                @foreach($news as $row)
                 <div class="col-md-6 col-lg-4">
                     <div class="single-category">
                         <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
+                            <img class="img-fluid" src="{{ url('storage/image/'.$row->image)}}" alt="">
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
-                                <a href="#">shoes </a>/
-                                <a href="#"> March 15, 2019</a>
+                                <a href="#">{{ $row->news_ads_type }} </a>/
+                                <a href="#"> {{ \Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</a>
                             </div>
-                            <a class="d-block" href="single-blog.html">
+                            <a class="d-block" href="{{ route('details', $row->id) }}">
                                 <h4>Shall for rule whose toge one may heaven to dat</h4>
                             </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>05 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
                         </div>
                     </div> 
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="single-category">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset('ui/img/category/1.jpg')}}" alt="">
-                        </div>
-                        <div class="short_details">
-                            <div class="meta-top d-flex">
-                                <a href="#">Fashion </a>/
-                                <a href="#"> March 15, 2019</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Whose can you're together first dominion man</h4>
-                            </a>
-                            <div class="meta-bottom d-flex">
-                                <a href="#"><i class="ti-comment"></i>08 comment</a>
-                                <a href="#"><i class="ti-heart"></i> 0 like</a>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
+                @endforeach
+
                 <div class="col-12 text-center">
-                    <a href="" class="main_btn">Load More <span class="ti-angle-double-right"></span></a>
+                    {{ $news->links() }}
                 </div>
             </div>
         </div>

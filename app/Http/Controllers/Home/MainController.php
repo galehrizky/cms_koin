@@ -9,17 +9,11 @@ class MainController extends Controller
 {
     public function index()
     {
-        $news = BeritaModel::with(['cat' => function($query){
-            $query->select('news_ads_type');
-        }])->WhereIn('type', ['news', 'ads'])->take(12)->get();
+        $news = BeritaModel::select('news_ads.*', 'news_ads_type.news_ads_type')->join('news_ads_type', 'news_ads_type.id', '=', 'news_ads.news_ads_type_id')->WhereIn('type', ['news', 'ads'])->take(12)->orderBy('id', 'DESC')->get();
 
 
-        foreach ($news as $key => $value) {
-                dd($value->cat);
-        }
-
-        $travel_limit_1 = BeritaModel::Where('type', 'travel')->take(1)->get();
-        $travel_limit_3 = BeritaModel::Where('type', 'travel')->take(3)->get();
+        $travel_limit_1 = BeritaModel::select('news_ads.*', 'news_ads_type.news_ads_type')->join('news_ads_type', 'news_ads_type.id', '=', 'news_ads.news_ads_type_id')->Where('type', 'travel')->take(1)->get();
+        $travel_limit_3 = BeritaModel::select('news_ads.*', 'news_ads_type.news_ads_type')->join('news_ads_type', 'news_ads_type.id', '=', 'news_ads.news_ads_type_id')->Where('type', 'travel')->take(3)->get();
 
     	return view('home.index', compact('news', 'travel_limit_1', 'travel_limit_3'));
     }
@@ -27,13 +21,29 @@ class MainController extends Controller
 
     public function get_by_id($id)
     {
-    	// $row = BeritaModel::where('id', $id)->firstOrFail();
-    	return view('home.single');
+    	$row = BeritaModel::select('news_ads.*', 'news_ads_type.news_ads_type')->join('news_ads_type', 'news_ads_type.id', '=', 'news_ads.news_ads_type_id')->where('news_ads.id', $id)->firstOrFail();
+    	return view('home.single', compact('row'));
     }
 
 
-    public function archive(){
-        return view('home.archive');
+    public function archive($type){
+
+    switch ($type) {
+        case 'news':
+            $arr = ['news', 'ads'];
+            break;
+        case 'travel':
+            $arr = ['travel'];
+            break;
+        
+        default:
+            abort(404);
+            break;
+    }
+
+       $news = BeritaModel::select('news_ads.*', 'news_ads_type.news_ads_type')->join('news_ads_type', 'news_ads_type.id', '=', 'news_ads.news_ads_type_id')->WhereIn('type',$arr)->orderBy('id', 'DESC')->paginate(18);;
+
+        return view('home.archive', compact('news'));
     }
 
     public function register(){

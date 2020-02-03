@@ -13,7 +13,7 @@
 Route::get('/', 'Home\MainController@index');
 Route::get('/news-detail-{id}', 'Home\MainController@get_by_id')->name('details');
 
-Route::get('/archive', 'Home\MainController@archive');
+Route::get('/archive-{type}', 'Home\MainController@archive')->name('type');
 
 Route::get('/register_umroh', 'Home\MainController@register');
 
