@@ -68,7 +68,7 @@ class BeritaController extends Controller
         $this->validate($request, [
             'news_ads_name' => 'required|min:5|max:50',
             'link' => 'url',
-            'image' => 'required|max:2000|mimes:jpg,png,jpeg',
+            'image' => 'required|max:2000|dimensions:width=320,height=150px|mimes:jpg,png,jpeg',
             'news_ads_type_id' => 'required',
             'description' => 'required',
             'start_date' => 'required',
@@ -121,7 +121,7 @@ class BeritaController extends Controller
         $this->validate($request, [
             'news_ads_name' => 'required|min:5|max:50',
             'link' => 'url',
-            'image' => 'max:2000|mimes:jpg,png,jpeg',
+            'image' => 'required|max:2000|dimensions:width=320,height=150px|mimes:jpg,png,jpeg',
             'news_ads_type_id' => 'required',
             'description' => 'required',
             'start_date' => 'required',

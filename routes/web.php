@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'Home\MainController@index');
+Route::get('/', function(){
+	return "Rest Api Ads & News ";
+});
+// Route::get('/', 'Home\MainController@index');
 Route::get('/news-detail-{id}', 'Home\MainController@get_by_id')->name('details');
 
 Route::get('/archive-{type}', 'Home\MainController@archive')->name('type');
@@ -29,6 +32,7 @@ Route::get('/', function () {
 Route::resource('/news', 'Admin\BeritaController');
 // Berita Datatables
 Route::get('/beritas/datatables/{param}', 'Admin\BeritaController@getDataTbales')->name('beritas.datatables');
+
 // Datatables kategori
 Route::get('kategoris/datatables', 'Admin\KategoriController@getDataTbales')->name('datatables.kategori');
 

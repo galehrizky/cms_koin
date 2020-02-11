@@ -30,11 +30,11 @@ class NewsTypeController extends Controller
     }
     public function getDataTbales(){
 
-        $data = NewsAdsTypeModel::select('news_ads_type','id')->get();
+        $data = NewsAdsTypeModel::select('news_ads_type','colors', 'id')->get();
         return Datatables::of($data)    
         ->addIndexColumn()
         ->addColumn('action', function($row){
-         $btn = '<a href="#" class="text-success mr-2 edit" data-url="'.route('category.update',$row->id).'" data-news_ads_type="'.$row->news_ads_type.'">
+         $btn = '<a href="#" class="text-success mr-2 edit" data-url="'.route('category.update',$row->id).'" data-news_ads_type="'.$row->news_ads_type.'" data-colors="'.$row->colors.'">
          <i class="nav-icon i-Pen-2 font-weight-bold"></i>
          </a>';
          $btn .= '<a href="#" class="text-danger mr-2 delete" data-url="'.route('category.destroy',$row->id).'">
@@ -60,6 +60,7 @@ class NewsTypeController extends Controller
         $this->validate($request, [
             'news_ads_type' => 'required',
         ]);
+
         $data = $request->except(['_token']);
         NewsAdsTypeModel::create($data);
 
