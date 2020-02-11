@@ -12,15 +12,17 @@ class NewsAdsApi extends Controller
 {
     public function Api_get_list()
     {
-    	$data = BeritaModel::join('news_ads_type', 'news_ads_type.id', 'news_ads.news_ads_type_id')->select('news_ads.created_at', 'news_ads.news_ads_name','news_ads.image', 'news_ads.updated_at')->whereDate('expired_date', '>=', Carbon::now()->format('Y-m-d'))->get();
+    	$data = BeritaModel::join('news_ads_type', 'news_ads_type.id', 'news_ads.news_ads_type_id')->select('news_ads.created_at', 'news_ads.news_ads_name', 'news_ads.id','news_ads.image', 'news_ads.updated_at')->whereDate('expired_date', '>=', Carbon::now()->format('Y-m-d'))->get();
 
     	$result = [];
         $aw = [];
+        
     	foreach ($data as $key => $value) {
 
     		$aw[$key]['postDate'] = Carbon::parse($value->created_at)->format('D, d M Y');
     		$aw[$key]['judul'] = $value->news_ads_name;
     		$aw[$key]['thumbail'] = $value->image;
+            $aw[$key]['id'] = $value->id;
     	}
 
 
@@ -70,6 +72,7 @@ class NewsAdsApi extends Controller
             $aw[$key]['newsAdsName'] = $value->news_ads_name;
             $kt[$key]['newsAdsType'] = $value->news_ads_type;
             $kt[$key]['colors'] = $value->colors;
+
         }
 
 
